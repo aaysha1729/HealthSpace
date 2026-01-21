@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useParams } from 'react-router-dom';
 import './CommunityPostPage.css';
 
-const API_BASE = 'http://localhost:5001/api/community';
+const API_BASE = import.meta.env.VITE_API_BASE ? `${import.meta.env.VITE_API_BASE}/community` : 'http://localhost:5001/api/community';
 
 const CommunityPostPage = () => {
   const { postId } = useParams();

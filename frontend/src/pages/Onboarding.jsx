@@ -23,7 +23,8 @@ const Onboarding = () => {
     const token = localStorage.getItem('authToken');
     if (token) {
       try {
-        await fetch('http://localhost:5001/api/auth/complete-onboarding', {
+        const apiAuthBase = import.meta.env.VITE_API_AUTH_BASE || 'http://localhost:5001/api/auth';
+        await fetch(`${apiAuthBase}/complete-onboarding`, {
           method: 'PUT',
           headers: { 'Authorization': `Bearer ${token}` }
         });

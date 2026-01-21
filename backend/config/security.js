@@ -7,6 +7,8 @@ export const securityConfig = {
       "http://localhost:5174",
       "http://localhost:5175",
       "http://localhost:5176",
+      "https://healthspace-6mmz.onrender.com",
+      "https://health-space-tau.vercel.app",
       process.env.FRONTEND_URL,
     ].filter(Boolean),
     credentials: true,

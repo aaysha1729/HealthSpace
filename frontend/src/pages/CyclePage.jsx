@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './CyclePage.css';
 
-const API_BASE = 'http://localhost:5001/api/cycle';
+const API_BASE = import.meta.env.VITE_API_BASE ? `${import.meta.env.VITE_API_BASE}/cycle` : 'http://localhost:5001/api/cycle';
 
 const CyclePage = () => {
   // State

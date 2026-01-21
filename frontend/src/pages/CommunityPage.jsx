@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './CommunityPage.css';
 
-const API_BASE = 'http://localhost:5001/api/community';
+const API_BASE = import.meta.env.VITE_API_BASE ? `${import.meta.env.VITE_API_BASE}/community` : 'http://localhost:5001/api/community';
 
 const CommunityPage = () => {
   const [posts, setPosts] = useState([]);
