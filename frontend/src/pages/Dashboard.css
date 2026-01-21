@@ -427,6 +427,14 @@
 .cal-day.predicted {
   background: #e0e8ed;
   color: #5a7a8a;
+  border: 2px solid #b8c8d2;
+  font-weight: 600;
+}
+
+.cal-day.predicted-window {
+  background: #eff2f6;
+  color: #5a7a8a;
+  border: 2px dashed #c5d5dc;
 }
 
 .cal-legend {

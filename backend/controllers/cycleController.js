@@ -1,5 +1,6 @@
 import CycleEntry from "../models/CycleEntry.js";
 import CycleSettings from "../models/CycleSettings.js";
+import { getPredictedPeriodWindow, getFertileWindowDays } from "../utils/cycleCalculations.js";
 
 // Get or create settings
 export const getSettings = async (req, res) => {
@@ -180,50 +181,47 @@ export const getMonthEntries = async (req, res) => {
 
     // Calculate predicted and fertile days
     let predictedDays = [];
+    let predictedWindowDays = [];
     let fertileDays = [];
 
     if (settings && settings.lastPeriodStart) {
       const cycleLength = settings.averageCycleLength;
       const periodLength = settings.averagePeriodLength;
 
-      // Calculate next period start
-      let nextPeriodStart = new Date(settings.lastPeriodStart);
-      while (nextPeriodStart < startDate) {
-        nextPeriodStart.setDate(nextPeriodStart.getDate() + cycleLength);
-      }
+      // Get predicted period window
+      const { predictedDays: predicted, windowDays: window } = getPredictedPeriodWindow(
+        settings.lastPeriodStart,
+        cycleLength,
+        periodLength
+      );
 
-      // Add predicted period days in this month
-      for (let i = 0; i < periodLength; i++) {
-        const predictedDay = new Date(nextPeriodStart);
-        predictedDay.setDate(predictedDay.getDate() + i);
-        if (predictedDay >= startDate && predictedDay <= endDate) {
-          predictedDays.push(predictedDay.getDate());
-        }
-      }
+      // Filter predicted days for this month
+      predictedDays = predicted
+        .filter(date => date >= startDate && date <= endDate)
+        .map(date => date.getDate());
 
-      // Calculate fertile window (typically days 10-16 of the cycle)
-      const ovulationDay = cycleLength - 14;
-      const fertileStart = ovulationDay - 4;
-      const fertileEnd = ovulationDay + 1;
+      // Filter window days for this month
+      predictedWindowDays = window
+        .filter(date => date >= startDate && date <= endDate)
+        .map(date => date.getDate());
 
+      // Calculate fertile window
       let cycleStart = new Date(settings.lastPeriodStart);
-      while (cycleStart < startDate) {
+      while (cycleStart <= startDate) {
         cycleStart.setDate(cycleStart.getDate() + cycleLength);
       }
       cycleStart.setDate(cycleStart.getDate() - cycleLength);
 
-      for (let day = fertileStart; day <= fertileEnd; day++) {
-        const fertileDate = new Date(cycleStart);
-        fertileDate.setDate(fertileDate.getDate() + day);
-        if (fertileDate >= startDate && fertileDate <= endDate) {
-          fertileDays.push(fertileDate.getDate());
-        }
-      }
+      const fertile = getFertileWindowDays(cycleStart, cycleLength);
+      fertileDays = fertile
+        .filter(date => date >= startDate && date <= endDate)
+        .map(date => date.getDate());
     }
 
     res.json({
       entries,
       predictedDays,
+      predictedWindowDays,
       fertileDays,
     });
   } catch (error) {

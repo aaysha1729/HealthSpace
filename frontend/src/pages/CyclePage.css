@@ -471,7 +471,14 @@
 .calendar-days .day.predicted {
   background: #e8eef4;
   color: #5b7a8a;
-  border: 2px dashed #c5d5dc;
+  border: 2px solid #c5d5dc;
+  font-weight: 600;
+}
+
+.calendar-days .day.predicted-window {
+  background: #f0f4f8;
+  color: #5b7a8a;
+  border: 2px dashed #d4dce5;
 }
 
 .calendar-days .day.current {

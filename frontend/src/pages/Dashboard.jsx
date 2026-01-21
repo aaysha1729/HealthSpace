@@ -17,7 +17,7 @@ const Dashboard = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [entry, setEntry] = useState({ flowIntensity: '', sensations: [], mood: null });
-  const [monthData, setMonthData] = useState({ entries: [], predictedDays: [], fertileDays: [] });
+  const [monthData, setMonthData] = useState({ entries: [], predictedDays: [], predictedWindowDays: [], fertileDays: [] });
 
   const sensationOptions = ['Cramps', 'Headache', 'Bloating', 'Backache'];
   const flowOptions = ['None', 'Light', 'Medium', 'Heavy'];
@@ -266,6 +266,7 @@ const Dashboard = () => {
                                     new Date().getMonth() === currentMonth.getMonth() && 
                                     new Date().getFullYear() === currentMonth.getFullYear();
                     const isPredicted = monthData.predictedDays?.includes(day);
+                    const isPredictedWindow = monthData.predictedWindowDays?.includes(day);
                     const isFertile = monthData.fertileDays?.includes(day);
                     const hasFlow = monthData.entries?.some(e => new Date(e.date).getDate() === day && e.isFlowDay);
 
@@ -274,6 +275,7 @@ const Dashboard = () => {
                     if (hasFlow) cls += ' flow';
                     else if (isFertile) cls += ' fertile';
                     else if (isPredicted) cls += ' predicted';
+                    else if (isPredictedWindow) cls += ' predicted-window';
 
                     return (
                       <button

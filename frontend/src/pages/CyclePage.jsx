@@ -17,6 +17,7 @@ const CyclePage = () => {
   const [monthData, setMonthData] = useState({
     entries: [],
     predictedDays: [],
+    predictedWindowDays: [],
     fertileDays: []
   });
   const [loading, setLoading] = useState(true);
@@ -74,7 +75,7 @@ const CyclePage = () => {
       setMonthData(data);
     } catch (error) {
       console.error('Error fetching month data:', error);
-      setMonthData({ entries: [], predictedDays: [], fertileDays: [] });
+      setMonthData({ entries: [], predictedDays: [], predictedWindowDays: [], fertileDays: [] });
     }
   };
 
@@ -161,9 +162,17 @@ const CyclePage = () => {
     
     if (isSelected) classes.push('selected');
     if (isToday) classes.push('today');
-    if (entry?.isFlowDay) classes.push('flow');
-    else if (monthData.fertileDays.includes(day)) classes.push('fertile');
-    else if (monthData.predictedDays.includes(day)) classes.push('predicted');
+    
+    // Apply styling priority: flow > fertile > predictedPeriod > predictedWindow
+    if (entry?.isFlowDay) {
+      classes.push('flow');
+    } else if (monthData.fertileDays.includes(day)) {
+      classes.push('fertile');
+    } else if (monthData.predictedDays.includes(day)) {
+      classes.push('predicted');
+    } else if (monthData.predictedWindowDays.includes(day)) {
+      classes.push('predicted-window');
+    }
     
     return classes.join(' ');
   };
