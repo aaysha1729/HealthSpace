@@ -1,0 +1,40 @@
+/* Signup Page Styles - extends Login.css */
+.privacy-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.privacy-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md);
+  background-color: var(--color-bg-light);
+  border-radius: 12px;
+}
+
+.option-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.option-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.option-desc {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+}
+
+.auth-note {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin-top: var(--spacing-md);
+}

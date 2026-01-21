@@ -1,0 +1,30 @@
+/* CTA Section Styles */
+.cta {
+  padding: var(--spacing-3xl) 0;
+  text-align: center;
+  background-color: var(--color-background);
+}
+
+.cta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-light);
+}
+
+.cta-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+}
+
+.cta-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xl);
+}

@@ -1,0 +1,191 @@
+/* Toolkit Section Styles */
+.toolkit {
+  padding: var(--spacing-3xl) 0;
+  background-color: var(--color-background-alt);
+}
+
+.toolkit-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.toolkit-card {
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.toolkit-card-large {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  background: var(--color-background-alt);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-md);
+  width: fit-content;
+}
+
+.toolkit-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+}
+
+.toolkit-card p {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-sm);
+}
+
+.card-footnote {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: auto;
+}
+
+.toolkit-preview {
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.preview-header {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.preview-calendar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.calendar-days span {
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  border-radius: var(--radius-sm);
+}
+
+.calendar-days span.highlighted {
+  background: linear-gradient(135deg, #e8eef4 0%, #dbe5ed 100%);
+  color: var(--color-primary);
+}
+
+.toolkit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.percentage {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-sm);
+}
+
+.card-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: var(--spacing-sm);
+}
+
+.card-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  cursor: pointer;
+}
+
+.card-options input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-primary);
+}
+
+.body-icon {
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-sm);
+}
+
+.slider-demo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.slider-demo span {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.slider-track {
+  flex: 1;
+  height: 6px;
+  background: var(--color-background-alt);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.slider-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #cbd5e0 0%, #a0aec0 100%);
+  border-radius: var(--radius-full);
+}
+
+.slider-thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.slider-thumb:active {
+  cursor: grabbing;
+}
+
+.slider-track {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .toolkit-main,
+  .toolkit-grid {
+    grid-template-columns: 1fr;
+  }
+}

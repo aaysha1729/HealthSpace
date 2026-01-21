@@ -1,0 +1,46 @@
+/* Privacy Section Styles */
+.privacy {
+  padding: var(--spacing-3xl) 0;
+  background-color: var(--color-background);
+}
+
+.privacy-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xl);
+}
+
+.privacy-feature {
+  text-align: center;
+  padding: var(--spacing-md);
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-light);
+}
+
+.privacy-feature h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+}
+
+.privacy-feature p {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .privacy-features {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+}

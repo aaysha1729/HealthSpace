@@ -1,0 +1,82 @@
+/* Hero Section Styles */
+.hero {
+  position: relative;
+  padding: var(--spacing-3xl) 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 2.75rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-primary);
+}
+
+.hero-title-italic {
+  font-style: italic;
+  color: #4a5568;
+}
+
+.hero-description {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-xl);
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.hero-decoration {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f0f4f8 0%, #e8eef4 100%);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.hero-decoration-left {
+  top: 20%;
+  left: -150px;
+}
+
+.hero-decoration-right {
+  bottom: 10%;
+  right: -150px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-description br {
+    display: none;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+}

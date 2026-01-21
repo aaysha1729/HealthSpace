@@ -1,0 +1,64 @@
+/* Header Styles */
+.header {
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--color-primary);
+}
+
+.logo-icon {
+  color: var(--color-primary);
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+.member-access {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  transition: color var(--transition-fast);
+}
+
+.member-access:hover {
+  color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+  
+  .member-access {
+    font-size: 0.8rem;
+  }
+}
