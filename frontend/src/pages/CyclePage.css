@@ -99,7 +99,7 @@
   padding: 1.25rem 1.5rem;
   margin: 0 3rem 2rem;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .info-icon {
@@ -144,7 +144,7 @@
   border-radius: 20px;
   padding: 2rem;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   text-align: center;
 }
 
@@ -165,7 +165,7 @@
 }
 
 .progress-ring-fill {
-  stroke: #5b7a8a;
+  stroke: #4ABC9E;
 }
 
 .day-info {
@@ -221,7 +221,7 @@
   border-radius: 20px;
   padding: 1.5rem;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .log-header {
@@ -366,12 +366,13 @@
   color: #c53030;
   background: #fed7d7;
 }
+
 .calendar-card {
   background: white;
   border-radius: 20px;
   padding: 2rem;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   height: fit-content;
 }
 
@@ -459,26 +460,28 @@
 }
 
 .calendar-days .day.flow {
-  background: #5b7a8a;
-  color: white;
+  background: #FF4757 !important;
+  color: white !important;
+  box-shadow: 0 3px 12px rgba(255, 71, 87, 0.5) !important;
 }
 
 .calendar-days .day.fertile {
-  background: #c5d5dc;
-  color: #1a1a2e;
+  background: #2ED573 !important;
+  color: white !important;
+  box-shadow: 0 3px 12px rgba(46, 213, 115, 0.5) !important;
 }
 
 .calendar-days .day.predicted {
-  background: #e8eef4;
-  color: #5b7a8a;
-  border: 2px solid #c5d5dc;
+  background: #A55EEA !important;
+  color: white !important;
+  box-shadow: 0 3px 12px rgba(165, 94, 234, 0.5) !important;
   font-weight: 600;
 }
 
 .calendar-days .day.predicted-window {
-  background: #f0f4f8;
-  color: #5b7a8a;
-  border: 2px dashed #d4dce5;
+  background: #D1C4E9 !important;
+  color: #6C3FA0 !important;
+  border: 2px dashed #A55EEA !important;
 }
 
 .calendar-days .day.current {
@@ -530,16 +533,18 @@
 }
 
 .legend-dot.flow {
-  background: #5b7a8a;
+  background: #FF4757;
+  box-shadow: 0 0 6px rgba(255, 71, 87, 0.6);
 }
 
 .legend-dot.fertile {
-  background: #c5d5dc;
+  background: #2ED573;
+  box-shadow: 0 0 6px rgba(46, 213, 115, 0.6);
 }
 
 .legend-dot.predicted {
-  background: #e8eef4;
-  border: 1px dashed #c5d5dc;
+  background: #A55EEA;
+  box-shadow: 0 0 6px rgba(165, 94, 234, 0.6);
 }
 
 /* Footer */
