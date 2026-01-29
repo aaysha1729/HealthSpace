@@ -106,7 +106,7 @@ const CyclePage = () => {
           ...todayEntry
         })
       });
-      
+
       if (res.ok) {
         setSaveMessage('Entry saved successfully!');
         fetchMonthData(); // Refresh calendar
@@ -142,27 +142,27 @@ const CyclePage = () => {
 
   const getDayClass = (day) => {
     const today = new Date();
-    const isToday = 
-      day === today.getDate() && 
-      currentMonth.getMonth() === today.getMonth() && 
+    const isToday =
+      day === today.getDate() &&
+      currentMonth.getMonth() === today.getMonth() &&
       currentMonth.getFullYear() === today.getFullYear();
-    
-    const isSelected = 
-      day === selectedDate.getDate() && 
-      currentMonth.getMonth() === selectedDate.getMonth() && 
+
+    const isSelected =
+      day === selectedDate.getDate() &&
+      currentMonth.getMonth() === selectedDate.getMonth() &&
       currentMonth.getFullYear() === selectedDate.getFullYear();
-    
+
     // Check if there's an entry for this day
     const entry = monthData.entries.find(e => {
       const entryDate = new Date(e.date);
       return entryDate.getDate() === day;
     });
-    
+
     let classes = ['day'];
-    
+
     if (isSelected) classes.push('selected');
     if (isToday) classes.push('today');
-    
+
     // Apply styling priority: flow > fertile > predictedPeriod > predictedWindow
     if (entry?.isFlowDay) {
       classes.push('flow');
@@ -173,8 +173,26 @@ const CyclePage = () => {
     } else if (monthData.predictedWindowDays.includes(day)) {
       classes.push('predicted-window');
     }
-    
+
     return classes.join(' ');
+  };
+
+  const getDayTooltip = (day) => {
+    const entry = monthData.entries.find(e => {
+      const entryDate = new Date(e.date);
+      return entryDate.getDate() === day;
+    });
+
+    if (entry?.isFlowDay) {
+      return 'Flow Day - Period';
+    } else if (monthData.fertileDays.includes(day)) {
+      return 'Estimated Fertile Window';
+    } else if (monthData.predictedDays.includes(day)) {
+      return 'Predicted Period';
+    } else if (monthData.predictedWindowDays.includes(day)) {
+      return 'Predicted Period Window';
+    }
+    return null;
   };
 
   const selectDay = (day) => {
@@ -211,7 +229,7 @@ const CyclePage = () => {
   if (loading) {
     return (
       <div className="cycle-page loading">
-        <motion.div 
+        <motion.div
           className="loading-spinner"
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -226,7 +244,7 @@ const CyclePage = () => {
   return (
     <div className="cycle-page">
       {/* Header */}
-      <motion.header 
+      <motion.header
         className="cycle-header"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -243,15 +261,15 @@ const CyclePage = () => {
           <a href="#" className="cycle-nav-link">Insights</a>
           <button className="cycle-profile-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="2"/>
-              <path d="M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="2" />
+              <path d="M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </button>
         </nav>
       </motion.header>
 
       {/* Info Banner */}
-      <motion.div 
+      <motion.div
         className="info-banner"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -259,7 +277,7 @@ const CyclePage = () => {
       >
         <div className="info-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor" />
           </svg>
         </div>
         <div className="info-content">
@@ -273,7 +291,7 @@ const CyclePage = () => {
         {/* Left Column */}
         <div className="cycle-left">
           {/* Day Circle */}
-          <motion.div 
+          <motion.div
             className="day-circle-card"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -298,8 +316,8 @@ const CyclePage = () => {
                   strokeWidth="8"
                   strokeLinecap="round"
                   initial={{ strokeDashoffset: 534 }}
-                  animate={{ 
-                    strokeDashoffset: 534 - (534 * ((settings?.currentCycleDay || 1) / (settings?.averageCycleLength || 28))) 
+                  animate={{
+                    strokeDashoffset: 534 - (534 * ((settings?.currentCycleDay || 1) / (settings?.averageCycleLength || 28)))
                   }}
                   transition={{ duration: 1, delay: 0.5 }}
                   style={{
@@ -311,7 +329,7 @@ const CyclePage = () => {
               </svg>
               <div className="day-info">
                 <span className="day-label">CURRENT</span>
-                <motion.span 
+                <motion.span
                   className="day-number"
                   key={settings?.currentCycleDay}
                   initial={{ scale: 0.8, opacity: 0 }}
@@ -330,7 +348,7 @@ const CyclePage = () => {
           </motion.div>
 
           {/* Log Today */}
-          <motion.div 
+          <motion.div
             className="log-card"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -397,7 +415,7 @@ const CyclePage = () => {
             </div>
 
             {/* Save Button */}
-            <motion.button 
+            <motion.button
               className={`save-btn ${saving ? 'saving' : ''}`}
               onClick={saveEntry}
               disabled={saving}
@@ -410,7 +428,7 @@ const CyclePage = () => {
             {/* Save Message */}
             <AnimatePresence>
               {saveMessage && (
-                <motion.p 
+                <motion.p
                   className={`save-message ${saveMessage.includes('Failed') ? 'error' : 'success'}`}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -424,7 +442,7 @@ const CyclePage = () => {
         </div>
 
         {/* Right Column - Calendar */}
-        <motion.div 
+        <motion.div
           className="calendar-card"
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -433,14 +451,14 @@ const CyclePage = () => {
           <div className="calendar-header">
             <h3>{monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}</h3>
             <div className="calendar-nav">
-              <motion.button 
+              <motion.button
                 onClick={prevMonth}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
                 ‹
               </motion.button>
-              <motion.button 
+              <motion.button
                 onClick={nextMonth}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -468,6 +486,7 @@ const CyclePage = () => {
                 <motion.span
                   key={day}
                   className={getDayClass(day)}
+                  title={getDayTooltip(day)}
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.3 + i * 0.015 }}
@@ -481,15 +500,15 @@ const CyclePage = () => {
           </div>
 
           <div className="calendar-legend">
-            <div className="legend-item">
+            <div className="legend-item" title="Days with recorded menstrual flow">
               <span className="legend-dot flow"></span>
               <span>Flow</span>
             </div>
-            <div className="legend-item">
+            <div className="legend-item" title="Estimated fertile window based on your cycle">
               <span className="legend-dot fertile"></span>
               <span>Est. Fertile</span>
             </div>
-            <div className="legend-item">
+            <div className="legend-item" title="Predicted period days based on your cycle history">
               <span className="legend-dot predicted"></span>
               <span>Predicted</span>
             </div>
@@ -498,7 +517,7 @@ const CyclePage = () => {
       </div>
 
       {/* Footer */}
-      <motion.footer 
+      <motion.footer
         className="cycle-footer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
